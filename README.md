@@ -14,5 +14,6 @@ This project is the capstone of the Cloud DevOps Nanodegree. In it I had to depl
 with an added :8080 to login in Jenkins. After the inital set-up you should see the Jenkins dashboard (If you cant login to Jenkins, connect to the Jenkins instance via SSH and start running the commands from the network.yaml file -> JenkinsInstance: UserData):
     - ![](04-jenkins_dashboard.png)
 6. Now we need to `scp` the kubernetes folder to our jenkins instance so that we can then deploy to kubernetes.
-6. Now we move on to creating the actual pipeline:
-    - erronous pipeline:
+7. Now we move on to creating the actual pipeline:
+    - erronous pipeline: ![](05-error_lint.png)
+    - after fixing the error: 
