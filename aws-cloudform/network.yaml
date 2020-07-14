@@ -217,6 +217,7 @@ Resources:
         Fn::Base64: !Sub |
           #!/bin/bash
           sudo apt-get update -y
+          #install docker
           sudo apt-get install default-jdk wget -y
           sudo apt-get remove docker docker-engine docker.io containerd runc
           sudo apt-get install \
@@ -236,18 +237,20 @@ Resources:
           sudo groupadd docker
           sudo usermod -aG docker jenkins
           cd /home/ubuntu
+          #install jenkins
           wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
           sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
           sudo apt-get update -y
           sudo apt-get install jenkins tidy -y
+          #instal aws
           curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
           sudo apt install unzip -y
           unzip awscliv2.zip
           sudo ./aws/install
+          #install kubernetes
           curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
           chmod +x ./kubectl
           sudo mv ./kubectl /usr/local/bin/kubectl
-          sudo systemctl status jenkins
       SecurityGroupIds:
         - Fn::GetAtt: JenkinsSecGroup.GroupId
       SubnetId: !Ref PublicSubnet1
