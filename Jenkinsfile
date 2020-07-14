@@ -17,6 +17,7 @@ pipeline {
         stage('Build Docker') {
             steps {
                 script {
+                    sh 'sudo su'
                     dockerImage = docker.build('${dockerHub}/${dockerImage}')
                     docker.withRegistry('', 'docker-creds') {
                         dockerImage.push()
