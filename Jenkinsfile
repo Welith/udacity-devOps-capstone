@@ -13,7 +13,7 @@ pipeline {
                 sh 'tidy -q -e **/*.html'
                 sh '''sudo docker run --rm -i hadolint/hadolint < Dockerfile'''
             }
-        }cd
+        }
         stage('Build Docker') {
             steps {
                 script {
