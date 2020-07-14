@@ -9,6 +9,7 @@ pipeline {
     stages {
         stage('Lint the app index and the Dockerfile') {
             steps {
+                sh "sudo chown jenkins: -R \$PWD/"
                 sh 'tidy -q -e **/*.html'
                 sh '''sudo docker run --rm -i hadolint/hadolint < Dockerfile'''
             }
