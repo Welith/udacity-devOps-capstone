@@ -4,6 +4,7 @@ pipeline {
         eksRegion = 'us-west-2'
         dockerHub = 'welith95'
         dockerImage = 'capstone'
+        dockerPass = 'RusinA95*'
     }
     agent any
     stages {
@@ -18,10 +19,8 @@ pipeline {
             steps {
                 script {
                     sh 'sudo docker build -t ${dockerHub}/${dockerImage} .'
-                    withCredentials([usernamePassword(credentialsId: 'docker-creds', passwordVariable: 'docker-credsPassword', usernameVariable: 'docker-credsUsername')]) {
-                              sh "sudo docker login -u ${env.docker-credsUsername} -p ${env.docker-credsPassword}"
-                              sh 'sudo docker push ${dockerHub}/${dockerImage}'
-                            }
+                    sh "sudo docker login -u ${dockerHub} -p ${dockerPass}"
+                    sh 'sudo docker push ${dockerHub}/${dockerImage}'
                 }
             }
         }
