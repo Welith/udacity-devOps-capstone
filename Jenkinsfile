@@ -10,7 +10,7 @@ pipeline {
         stage('Lint the app index and the Dockerfile') {
             steps {
                 sh 'tidy -q -e **/*.html'
-                sh '''docker run --rm -i hadolint/hadolint < Dockerfile'''
+                sh '''sudo docker run --rm -i hadolint/hadolint < Dockerfile'''
             }
         }
         stage('Build Docker') {

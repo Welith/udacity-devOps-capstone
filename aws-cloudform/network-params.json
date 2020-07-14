@@ -29,6 +29,6 @@
   },
   {
     "ParameterKey": "SSHStorage",
-    "ParameterValue": "34.217.137.30"
+    "ParameterValue": "128.69.199.52/32"
   }
 ]
