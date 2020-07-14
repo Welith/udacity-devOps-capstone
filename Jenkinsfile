@@ -17,7 +17,7 @@ pipeline {
             steps {
                 script {
                     dockerImage = docker.build('${dockerHub}/${dockerImage}')
-                    docker.withRegistry('', 'docker-hub-creds') {
+                    docker.withRegistry('', 'docker-creds') {
                         dockerImage.push()
                     }
                 }
