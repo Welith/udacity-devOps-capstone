@@ -25,11 +25,9 @@ pipeline {
         }
         stage('Deploy to Kubernetes')  {
             steps {
-                script {
-                    withAWS(credentials: 'aws-static', region: eksRegion) {
-                        sh 'aws eks --region=${eksRegion} update-kubeconfig --name ${eksClusterName}'
-                        sh 'kubectl apply -f kubernetes/deploy.yaml'
-                    }
+                withAWS(credentials: 'aws-static', region: eksRegion) {
+                    sh 'aws eks --region=${eksRegion} update-kubeconfig --name ${eksClusterName}'
+                    sh 'kubectl apply -f kubernetes/deploy.yaml'
                 }
             }
         }
