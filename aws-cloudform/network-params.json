@@ -1,7 +1,7 @@
 [
   {
     "ParameterKey": "EnvironmentName",
-    "ParameterValue": "DevOps Capstone"
+    "ParameterValue": "capstone"
   },
   {
     "ParameterKey": "VpcCIDR",
