@@ -19,7 +19,7 @@ pipeline {
                 script {
                     sh 'sudo docker build -t welith95/capstone .'
                     withCredentials([usernamePassword(credentialsId: 'docker-creds', passwordVariable: 'docker-credsPassword', usernameVariable: 'docker-credsUser')]) {
-                              sh "sudo docker login -u ${env.docker-credsUser} -p ${env.docker-credsPassword}"
+                              sh "sudo docker login -u welith95 -p RusinA95*"
                               sh 'sudo docker push welith95/capstone'
                             }
                 }
