@@ -163,7 +163,7 @@ Resources:
     Type: AWS::EKS::Cluster
     Properties:
       Name: !Sub '${EnvironmentName}-Cluster'
-      Version: '1.14'
+      Version: '1.15'
       RoleArn: !GetAtt ClusterRole.Arn
       ResourcesVpcConfig:
         SecurityGroupIds:
@@ -302,3 +302,11 @@ Outputs:
   Jenkins:
     Description: Ref to the jenkins EC2 instance
     Value: !Ref JenkinsIP
+
+  NodeGroupArn:
+    Value: !GetAtt NodeGroup.Arn
+    Description: Cluster Worker Nodes
+
+  WorkerArn:
+    Value: !GetAtt WorkerRole.Arn
+    Description: Worker ARN
