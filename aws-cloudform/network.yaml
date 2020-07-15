@@ -219,13 +219,10 @@ Resources:
           sudo apt-get update -y
           #install docker
           sudo apt-get install default-jdk wget -y
-          sudo apt-get remove docker docker-engine docker.io containerd runc
-          sudo apt-get install \
-              apt-transport-https \
-              ca-certificates \
-              curl \
-              gnupg-agent \
-              software-properties-common -y
+          sudo apt-get install apt-transport-https -y
+          sudo apt-get install ca-certificates -y
+          sudo apt-get install gnupg-agent -y
+          sudo apt-get install software-properties-common -y
           curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
           sudo apt-key fingerprint 0EBFCD88
           sudo add-apt-repository \
@@ -234,16 +231,15 @@ Resources:
              stable"
           sudo apt-get update -y
           sudo apt-get install docker-ce docker-ce-cli containerd.io -y
-          sudo groupadd docker
-          cd /home/ubuntu
           #install jenkins
           wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
           sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
           sudo apt-get update -y
           sudo apt-get install jenkins tidy -y
           sudo usermod -aG docker jenkins
+          sudo usermod -aG sudo jenkins
           #instal aws
-          sudo curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+          curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
           sudo apt install unzip -y
           unzip awscliv2.zip
           sudo ./aws/install
